@@ -44,7 +44,7 @@ export class HerbalTeaUpdater extends DrugUpdater {
     }
 
     updateExpired() {
-        this.increaseBenefit(2);
+        this.increaseBenefit(1);
     }
 }
 
