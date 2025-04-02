@@ -82,17 +82,14 @@ export class DafalganUpdater extends DrugUpdater {
     }
 }
 
-export function createDrugUpdater(drug){
-    switch (drug.name) {
-        case "Herbal Tea":
-            return new HerbalTeaUpdater(drug);
-        case "Fervex":
-            return new FervexUpdater(drug);
-        case "Magic Pill":
-            return new MagicPillUpdater(drug);
-        case "Dafalgan":
-            return new DafalganUpdater(drug);
-        default:
-            return new DrugUpdater(drug);
-    }
+const drugUpdaters = {
+    "Herbal Tea": HerbalTeaUpdater,
+    "Fervex": FervexUpdater,
+    "Magic Pill": MagicPillUpdater,
+    "Dafalgan": DafalganUpdater
+};
+
+export function createDrugUpdater(drug) {
+    const Updater = drugUpdaters[drug.name] || DrugUpdater;
+    return new Updater(drug);
 }
